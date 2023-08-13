@@ -19,8 +19,7 @@ contract ZombieFeeding is ZombieFactory {
   KittyInterface kittyContract;
 
   function setKittyContractAddress(address _address) external onlyOwner { /*notice even if there is no import for ownable.sol here, we use onlyOwner modi
-                                                          //fier,how?our base contract ZombieFactory inherits from Ownable, and ZombieFeeding inherits from 
-our base contracts Remember:
+fier,how?our base contract ZombieFactory inherits from Ownable, and ZombieFeeding inherits from our base contracts Remember:
 ZombieFeeding is ZombieFactory
 ZombieFactory is Ownable*/
     kittyContract = KittyInterface(_address);
