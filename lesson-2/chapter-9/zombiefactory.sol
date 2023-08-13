@@ -16,7 +16,8 @@ contract ZombieFactory {
     mapping (uint => address) public zombieToOwner;
     mapping (address => uint) ownerZombieCount;
 
-    function _createZombie(string _name, uint _dna) internal {
+    function _createZombie(string _name, uint _dna) internal {//function visibility set to  internal so that zombiefeeding.sol(inherit this contract,so
+it is possible to call internal function) can call the function
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
