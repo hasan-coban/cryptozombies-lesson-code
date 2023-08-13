@@ -30,7 +30,8 @@ contract ZombieFactory {
     }
 
     function createRandomZombie(string _name) public {
-        require(ownerZombieCount[msg.sender] == 0);
+        require(ownerZombieCount[msg.sender] == 0);//We dont want any user can keep calling this function to create unlimited zombies in their army, 
+                                                    //therefore a check is put before creating a new zombie
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
