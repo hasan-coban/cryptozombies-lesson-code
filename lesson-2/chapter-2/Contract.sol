@@ -12,10 +12,10 @@ contract ZombieFactory {
         uint dna;
     }
 
-    Zombie[] public zombies;
+    Zombie[] public zombies;//an array of structs called zombies
 
-    mapping (uint => address) public zombieToOwner;
-    mapping (address => uint) ownerZombieCount;
+    mapping (uint => address) public zombieToOwner;//mapping the id of zombie to the owner's address
+    mapping (address => uint) ownerZombieCount;//mapping the address of the owner to the number of zombie that address has
 
     function _createZombie(string _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
