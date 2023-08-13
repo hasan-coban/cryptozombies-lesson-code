@@ -19,8 +19,8 @@ contract ZombieFactory {
 
     function _createZombie(string _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
-        zombieToOwner[id] = msg.sender;
-        ownerZombieCount[msg.sender]++;
+        zombieToOwner[id] = msg.sender;// The syntax for storing data in a mapping is just like with arrays,pay attention to the bracket notation here
+        ownerZombieCount[msg.sender]++;//increasing the num of zombies for msg.sender 
         emit NewZombie(id, _name, _dna);
     }
 
