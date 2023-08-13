@@ -25,6 +25,7 @@ contract ZombieFeeding is ZombieFactory {
     _targetDna = _targetDna % dnaModulus;
     uint newDna = (myZombie.dna + _targetDna) / 2;
     if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
+//checking if the strings are the same. notice we use keccak256 functions,not like js string comparison
       newDna = newDna - newDna % 100 + 99;
     }
     _createZombie("NoName", newDna);
@@ -32,8 +33,9 @@ contract ZombieFeeding is ZombieFactory {
 
   function feedOnKitty(uint _zombieId, uint _kittyId) public {
     uint kittyDna;
-    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
-    feedAndMultiply(_zombieId, kittyDna, "kitty");
+    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);//we are passing "genes" (the 10th return parameter) to kittyDna,pay attention genes was 
+//genes type was uint256 but we use uint for kittyDna here, which shows once again uint256 and uint are same
+    feedAndMultiply(_zombieId, kittyDna, "kitty");//passing "kitty" string as _species
   }
 
 }
