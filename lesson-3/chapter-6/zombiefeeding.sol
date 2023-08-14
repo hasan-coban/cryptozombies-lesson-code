@@ -27,7 +27,7 @@ contract ZombieFeeding is ZombieFactory {
   }
 
   function _isReady(Zombie storage _zombie) internal view returns (bool) {
-      return (_zombie.readyTime <= now);
+      return (_zombie.readyTime <= now);//checking if enough time has passed before new feeding
   }
 
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
