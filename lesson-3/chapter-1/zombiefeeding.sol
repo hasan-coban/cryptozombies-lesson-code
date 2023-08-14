@@ -19,7 +19,8 @@ contract ZombieFeeding is ZombieFactory {
   KittyInterface kittyContract;
 
   function setKittyContractAddress(address _address) external {
-    kittyContract = KittyInterface(_address);
+    kittyContract = KittyInterface(_address);//the  function is external, which means anyone can call it and set a new address for kittyContract. 
+                                          //needs to be fixed
   }
 
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
