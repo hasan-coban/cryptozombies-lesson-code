@@ -10,8 +10,8 @@ contract ZombieFactory is Ownable {
     struct Zombie {
         string name;
         uint dna;
-        uint32 level;
-        uint32 readyTime;
+        uint32 level;//level set to gain some special features
+        uint32 readyTime;//indicates the amount of time before the zombie can again attack or feed
     }
 
     Zombie[] public zombies;
