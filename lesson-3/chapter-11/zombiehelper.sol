@@ -18,7 +18,9 @@ contract ZombieHelper is ZombieFeeding {
   }
 
   function getZombiesByOwner(address _owner) external view returns(uint[]) {
-    uint[] memory result = new uint[](ownerZombieCount[_owner]);
+    uint[] memory result = new uint[](ownerZombieCount[_owner]);/*using ownerZombieCount map by passing in _owner address, which returns a uint
+.That is gonna set length of the array.
+*/
 
     return result;
   }
