@@ -40,7 +40,7 @@ contract ZombieFeeding is ZombieFactory {
       newDna = newDna - newDna % 100 + 99;
     }
     _createZombie("NoName", newDna);
-    _triggerCooldown(myZombie);
+    _triggerCooldown(myZombie);//checking if enough time has passed, if not the user can't invoke this function
   }
 
   function feedOnKitty(uint _zombieId, uint _kittyId) public {
