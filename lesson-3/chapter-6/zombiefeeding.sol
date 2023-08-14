@@ -30,6 +30,7 @@ contract ZombieFeeding is ZombieFactory {
       return (_zombie.readyTime <= now);//checking if enough time has passed before new feeding
   }
 
+//a problem with the visibility of following function:anyone can call the function directly and pass in any _targetDna or _species they want to.needs to be fixed
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
     require(msg.sender == zombieToOwner[_zombieId]);
     Zombie storage myZombie = zombies[_zombieId];
