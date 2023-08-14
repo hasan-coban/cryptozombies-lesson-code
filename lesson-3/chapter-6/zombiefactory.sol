@@ -14,7 +14,7 @@ contract ZombieFactory is Ownable {
       string name;
       uint dna;
       uint32 level;
-      uint32 readyTime;
+      uint32 readyTime;//equal to now(the last feeding time)+cooldownTime(which is 1 day)
     }
 
     Zombie[] public zombies;
