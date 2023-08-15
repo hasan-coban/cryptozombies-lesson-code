@@ -14,7 +14,11 @@ contract ZombieFactory is Ownable {
       uint32 level;
       uint32 readyTime;
       uint16 winCount;
-      uint16 lossCount;
+      uint16 lossCount;/*
+ Remember, since we can pack uints inside structs, we want to use the smallest uints we can get away with.
+A uint8 is too small, since 2^8 = 256 — if our zombies attacked once per day, they could overflow this within a year. 
+But 2^16 is 65536 — so unless a user wins or loses every day for 179 years straight, we should be safe here.
+*/
     }
 
     Zombie[] public zombies;
@@ -23,7 +27,7 @@ contract ZombieFactory is Ownable {
     mapping (address => uint) ownerZombieCount;
 
     function _createZombie(string _name, uint _dna) internal {
-        uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
+        uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;//updated based on new structs members
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
